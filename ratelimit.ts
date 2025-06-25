@@ -1,5 +1,15 @@
 import { createMutex } from "@117/mutex";
 
+/**
+ * RateLimit class to limit the execution of a callback function
+ * to a specified rate in milliseconds.
+ *
+ * Usage:
+ * const rateLimiter = new RateLimit(1000); // 1 second rate limit
+ * await rateLimiter.limit(() => {
+ *   // Your code here
+ * });
+ */
 export class RateLimit {
   private available: Date = new Date();
   private mutex = createMutex();
@@ -12,6 +22,7 @@ export class RateLimit {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
+  /** Call the callback with rate limiting */
   public async limit<T>(callback: () => T): Promise<T> {
     await this.mutex.acquire();
     let result: T;
