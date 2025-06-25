@@ -1,0 +1,14 @@
+{
+  "name": "@sauber/ratelimit",
+  "version": "0.1.0",
+  "license": "MIT",
+  "exports": "./ratelimit.ts",
+  "imports": {
+    "@117/mutex": "jsr:@117/mutex@^1.0.8",
+    "@std/assert": "jsr:@std/assert@^1.0.13"
+  },
+  "lock": false,
+  "publish": {
+    "include": ["LICENSE", "README.md", "ratelimit.ts"]
+  }
+}
