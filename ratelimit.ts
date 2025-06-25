@@ -11,7 +11,9 @@ import { createMutex } from "@117/mutex";
  * });
  */
 export class RateLimit {
+  /** The next available time to execute the callback */
   private available: Date = new Date();
+  /** Mutex to ensure that only one callback is executed at a time */
   private mutex = createMutex();
 
   /** rate is number of milliseconds since start of previous call */
